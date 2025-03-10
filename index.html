@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <link rel="stylesheet" href="/src/style.css" />
     <title>AI Travel Itinerary</title>
   </head>
@@ -13,7 +14,7 @@
       </header>
 
       <main>
-        <form>
+        <form id="itinerary-generator-form">
           <input
             type="text"
             class="input-control"
@@ -25,13 +26,7 @@
           <input type="submit" class="submit-button" />
         </form>
 
-        <div class="itinerary">
-          Day 1
-          <br />
-          Day 2
-          <br />
-          Day 3
-        </div>
+        <div class="itinerary" id="itinerary"></div>
       </main>
       <footer>
         This project was built by Polina Tretiakova and is
@@ -46,6 +41,7 @@
         >.
       </footer>
     </div>
+
     <script src="/src/index.js"></script>
   </body>
 </html>
