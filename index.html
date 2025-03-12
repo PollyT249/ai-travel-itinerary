@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <link rel="stylesheet" href="/src/style.css" />
     <title>AI Travel Itinerary</title>
@@ -11,24 +10,26 @@
   <body>
     <div class="container">
       <header>
-        <h1>AI Travel Itinerary Generator</h1>
+        <h1>AI Travel Itinerary Generator🧭</h1>
       </header>
 
       <main>
-        <form id="itinerary-generator-form">
-          <input
-            type="text"
-            class="input-control"
-            placeholder="Enter a place you want to visit.."
-            autofocus
-            required
-            autocomplete="off"
-            id="input-instructions"
-          />
-          <input type="submit" class="submit-button" />
-        </form>
-
-        <div class="itinerary" id="itinerary"></div>
+        <div class="form-container">
+          <form id="itinerary-generator-form">
+            <input
+              type="text"
+              class="input-control"
+              placeholder="Enter a city or country to see what places to visit.."
+              autofocus
+              required
+              autocomplete="off"
+              id="input-instructions"
+            />
+            <input type="submit" class="submit-button" />
+          </form>
+          <div class="hint">i.e: Paris, Amsterdam, Rome</div>
+        </div>
+        <div class="itinerary hidden" id="itinerary"></div>
       </main>
       <footer>
         This project was built by Polina Tretiakova and is

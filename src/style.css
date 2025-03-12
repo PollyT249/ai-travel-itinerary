@@ -15,18 +15,35 @@ header {
 
 h1 {
   text-align: center;
-  font-size: 36px;
+  font-size: 38px;
   line-height: 1.5;
-}
-
-form {
-  display: flex;
-  margin-bottom: 30px;
-  padding: 30px;
+  padding: 18px;
+  color: #c19898;
   background-color: #5c5757;
   border-radius: 16px;
   border: 1px solid #61b390;
   box-shadow: 0px 10px 22px 4px rgba(1, 53, 44, 1);
+}
+
+.form-container {
+  margin-bottom: 30px;
+  padding: 24px;
+  background-color: #5c5757;
+  border-radius: 16px;
+  border: 1px solid #61b390;
+  box-shadow: 0px 10px 22px 4px rgba(1, 53, 44, 1);
+}
+
+form {
+  display: flex;
+}
+
+.hint {
+  line-height: 1.5;
+  margin-top: 7px;
+  color: #e1eacd;
+  opacity: 0.6;
+  font-size: 13px;
 }
 
 .input-control {
@@ -37,6 +54,7 @@ form {
   border: 1px solid #61b390;
   font-size: 16px;
   line-height: 1;
+  box-shadow: 0px 5px 11px 2px rgba(1, 53, 44, 1);
 }
 
 .submit-button {
@@ -50,6 +68,7 @@ form {
   padding: 14px 24px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 11px 2px rgba(1, 53, 44, 1);
 }
 
 .submit-button:hover {
@@ -61,10 +80,30 @@ form {
 .itinerary {
   font-size: 16px;
   background-color: #5c5757;
+  color: #bad8b6;
   padding: 20px;
   line-height: 2;
   border-left: 3px solid #61b390;
   box-shadow: 0px 10px 22px 4px rgba(1, 53, 44, 1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Slide-in animation */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  display: none;
 }
 
 footer {
@@ -73,6 +112,16 @@ footer {
   margin-top: 30px;
 }
 
+.generating {
+  animation: blink 1s steps(5, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
 a {
-  color: #bad8b6;
+  color: #c19898;
 }

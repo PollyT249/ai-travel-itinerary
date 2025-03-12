@@ -1,11 +1,7 @@
 function displayItinerary(response) {
-  console.log("Itinerary generated");
-  new Typewriter("#itinerary", {
-    strings: response.data.answer,
-    autoStart: true,
-    delay: 1,
-    cursor: "",
-  });
+  let itineraryElement = document.querySelector("#itinerary");
+  itineraryElement.innerHTML = response.data.answer;
+  itineraryElement.classList.add("fade-in");
 }
 
 function generateItinerary(event) {
@@ -13,20 +9,16 @@ function generateItinerary(event) {
 
   let instructionsInput = document.querySelector("#input-instructions");
   let apiKey = "20ao53abceat410d7090d5fb4a77c102";
-  let prompt = `Write a 4-day travel itinerary for ${instructionsInput.value}. List popular sights and a short daily plan, max 15 lines. Add up to 10 emojis total. Include estimated cost for each day in euros and total cost. Respond only in plain HTML, no markdown, no formatting symbols like asterisks, backticks, or hashtags. Use plain text symbols like & instead of escaped HTML entities such as &. Do not escape characters like &, <, or > unless necessary to avoid breaking tags. No extra explanations, just clean HTML output in a list style.`;
+  let prompt = `Write a detailed 3-day travel itinerary for ${instructionsInput.value}. For each day, provide at least 4 popular sights, activities, or events, but do not include hotels or accommodation information. Use only plain HTML with unordered lists (<ul>) and list items (<li>), but do not apply any list-style (no bullets or numbers). For each day, start with a title in <h2> that includes a short description and add 1 or 2 relevant emojis. If you know the price of an activity or ticket, include it next to the item in euros; if you do not know the price, leave it blank without guessing. After each day, show an estimated total cost in euros for that day. After listing all 3 days, write the total estimated cost on a new line using a <p> tag, and make sure it appears clearly separated from the previous content. Do not use any markdown, special symbols, asterisks, backticks, hashtags, or escape characters like &amp;. Only use clean HTML tags. Do not escape &, <, > unless used in tags. Return only the final itinerary in HTML, nothing else.`;
   let context =
     "You are a travel specialist and know the best tourist spots around the world.";
   let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
   axios.get(apiURL).then(displayItinerary);
 
-  console.log("Generating itinerary");
-  console.log(`Prompt: ${prompt}`);
-  console.log(`Context: ${context}`);
+  let itineraryElement = document.querySelector("#itinerary");
+  itineraryElement.classList.remove("hidden");
+  itineraryElement.innerHTML = `<div class="generating">⏳ Generating an itinerary plan for ${instructionsInput.value}</div>`;
 }
 
 let itineraryFormElement = document.querySelector("#itinerary-generator-form");
 itineraryFormElement.addEventListener("submit", generateItinerary);
-
-// Write a 4-day travel itinerary for ${instructionsInput.value}. List popular sights and a short daily plan, max 15 lines. Add up to 10 emojis total. Include estimated daily cost in euros and total cost. Respond only in plain HTML, no markdown, no formatting symbols like asterisks, dashes, backticks, or hashtags. No extra explanations, just clean HTML output.
-
-// Generate a travel itinerary for the place given by user ${instructionsInput.value} for 4 days. Provide popular sights, keep it short and well-formatted, in less than 15 lines, separate and start each day with a new line, add some emojis (not more than 10). Add an estimated price for each day in euros, and include total amount of money for all days. Please give me a short response in HTML format only, without actually including word "html". Do not use markdown, special symbols, or code formatting. Remove all formatting like asterisks, dashes, backticks, and hash symbols.
